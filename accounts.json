@@ -1,0 +1,22 @@
+{
+    "accounts": {
+        "ACC001": {
+            "account_number": "ACC001",
+            "pin": "1234",
+            "name": "John Doe",
+            "balance": 3500.0,
+            "account_type": "Savings",
+            "created_date": "2025-09-08",
+            "is_active": false
+        },
+        "ACC002": {
+            "account_number": "ACC002",
+            "pin": "1289",
+            "name": "Joe",
+            "balance": 10000.0,
+            "account_type": "Savings",
+            "created_date": "2025-09-08",
+            "is_active": false
+        }
+    }
+}
