@@ -56,7 +56,7 @@ account_data = {
 
 # # Create account
 # account_repo.create_account(account_data)
-# print("Account created ✅")
+# print("Account created ")
 
 # # Fetch account
 # acc = account_repo.get_account("ACC002")
@@ -70,60 +70,4 @@ account_data = {
 # account_repo.delete_account("ACC001")
 
 
-# transaction
-class TransactionRepository:
-    def __init__(self, db_manager):
-        self.db_manager = db_manager
-
-    def add_transaction(self, account_number, transaction):
-        data = self.db_manager.load_data()
-        if account_number not in data["transactions"]:
-            data["transactions"][account_number] = []
-        data["transactions"][account_number].append(transaction)
-        self.db_manager.save_data(data)
-
-    def get_transactions(self, account_number, limit=10):
-        data = self.db_manager.load_data()
-        return data["transactions"].get(account_number, [])[-limit:]
-
-    def get_transaction_by_id(self, transaction_id):
-        data = self.db_manager.load_data()
-        for acc_txns in data["transactions"].values():
-            for txn in acc_txns:
-                if txn["transaction_id"] == transaction_id:
-                    return txn
-        return None
-
-    def update_balance_after_transaction(self, account_number, new_balance):
-        data = self.db_manager.load_data()
-        if account_number in data["accounts"]:
-            data["accounts"][account_number]["balance"] = new_balance
-            self.db_manager.save_data(data)
-
-transaction_repo = TransactionRepository(db_manager)
-# Step 4: Work with Transactions
-transaction = {
-    "transaction_id": "TXN001",
-    "date": "2025-09-08 12:00:00",
-    "type": "DEPOSIT",
-    "amount": 500.0,
-    "balance_after": 1500.0,
-    "description": "Cash Deposit"
-}
-
-# Add transaction
-transaction_repo.add_transaction("ACC001", transaction)
-print("Transaction added ✅")
-
-# Get transactions
-print("Recent transactions:", transaction_repo.get_transactions("ACC001"))
-
-# Get specific transaction
-print("Fetch by ID:", transaction_repo.get_transaction_by_id("TXN001"))
-
-# Update balance after transaction
-transaction_repo.update_balance_after_transaction("ACC001", 2000.0)
-print("Balance updated:", account_repo.get_account("ACC001")["balance"])
-
-    
 
