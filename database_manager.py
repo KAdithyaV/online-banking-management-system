@@ -4,11 +4,15 @@ from datetime import datetime
 
 class DatabaseManager:
 
-    def __init__(self, file_path="accounts.json"):
+    def __init__(self, file_path="online-banking-management-system/accounts.json"):
+        """ Initialize the DatabaseManager.
+        parameter file_path: Path to the JSON file used for storing accounts."""
         self.file_path = file_path
         self.backup_dir = "data/backup/"
 
     def initialize_database(self):
+        """Create the database file with a default account if it does not exist.
+        Ensures the project always has a base JSON file to work with."""
         if not os.path.exists(self.file_path):
             initial_data = {
                 "accounts": {
@@ -26,6 +30,8 @@ class DatabaseManager:
             self.save_data(initial_data)
 
     def load_data(self):
+        """Load account data from the JSON file.
+        return: Dictionary containing all account details."""
         try:
             with open(self.file_path, "r") as f:
                 return json.load(f)
@@ -37,9 +43,13 @@ class DatabaseManager:
             return {}
 
     def save_data(self, data):
+        """Save updated account data to the JSON file.
+        A backup of the previous file is created before saving.
+        parameter data: Dictionary containing account data."""
         self.backup_data()  # always backup before overwrite
         with open(self.file_path, "w") as f:
             json.dump(data, f, indent=4)
+        print(f"Saved changes to {self.file_path}")
 
     def backup_data(self):
         """Create timestamped backup of database file."""
@@ -56,6 +66,8 @@ class DatabaseManager:
         else:
             print("No database file to backup")
 
+"""Testing the functions"""
 db_manager = DatabaseManager("accounts.json")
 db_manager.initialize_database()
+
 db_manager.backup_data()
