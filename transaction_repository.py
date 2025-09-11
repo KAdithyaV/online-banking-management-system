@@ -72,16 +72,16 @@ class TransactionRepository:
 transaction_repo = TransactionRepository(db_manager)
 # Step 4: Work with Transactions
 transaction = {
-    "transaction_id": "TXN001",
-    "date": "2025-09-08 12:00:00",
+    "transaction_id": "TXN002",
+    "date": "2025-09-11 12:00:00",
     "type": "DEPOSIT",
-    "amount": 400.0,
-    "balance_after": 1500.0,
+    "amount": 5000.0,
+    "balance_after": 15000.0,
     "description": "Cash Deposit"
 }
 
 """ Add Transaction """
-transaction_repo.add_transaction("ACC001", transaction)
+# transaction_repo.add_transaction("ACC001", transaction)
 
 
 """Get transactions"""
@@ -91,5 +91,5 @@ transaction_repo.add_transaction("ACC001", transaction)
 # print(f"Fetch by ID : {transaction_repo.get_transaction_by_id("TXN001")}")
 
 """Update balance after transaction"""
-# transaction_repo.update_balance_after_transaction("ACC001",2000)
+# transaction_repo.update_balance_after_transaction("ACC002",15000)
 # print(f"Balance updated: {account_repo.get_account("ACC001")["balance"]}")
