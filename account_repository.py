@@ -76,19 +76,20 @@ account_data = {
 
 
 # # Create account
-account_repo.create_account(account_data)
-print("Account created ")
+# account_repo.create_account(account_data)
+# print("Account created ")
 
 # # Fetch account
 # acc = account_repo.get_account("ACC002")
 # print("Fetched account:", acc)
 
 # # Update account
-account_repo.update_account("ACC002", {"is_active": False})
-print("Updated account:", account_repo.get_account("ACC002"))
+# account_repo.update_account("ACC002", {"is_active": False})
+# print("Updated account:", account_repo.get_account("ACC002"))
 
 # Delete (deactivate) account
 # account_repo.delete_account("ACC001")
+
 
 
 
