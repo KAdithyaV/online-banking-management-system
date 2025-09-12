@@ -13,22 +13,25 @@ class DatabaseManager:
     def initialize_database(self):
         """Create the database file with a default account if it does not exist.
         Ensures the project always has a base JSON file to work with."""
-        if not os.path.exists(self.file_path):
-            initial_data = {
-                "accounts": {
-                    "ACC001": {
-                        "account_number": "ACC001",
-                        "pin": "1234",
-                        "name": "John Doe",
-                        "balance": 1500.00,
-                        "account_type": "Savings",
-                        "created_date": "2024-01-15",
-                        "is_active": True
+        try:
+            if not os.path.exists(self.file_path):
+                initial_data = {
+                    "accounts": {
+                        "ACC001": {
+                            "account_number": "ACC001",
+                            "pin": "1234",
+                            "name": "Ravi",
+                            "balance": 1500.00,
+                            "account_type": "Savings",
+                            "created_date": "2024-01-15",
+                            "is_active": True
+                        }
                     }
                 }
-            }
             self.save_data(initial_data)
-
+        except Exception as e:
+            print(e)
+    
     def load_data(self):
         """Load account data from the JSON file.
         return: Dictionary containing all account details."""
@@ -46,25 +49,33 @@ class DatabaseManager:
         """Save updated account data to the JSON file.
         A backup of the previous file is created before saving.
         parameter data: Dictionary containing account data."""
-        self.backup_data()  # always backup before overwrite
-        with open(self.file_path, "w") as f:
-            json.dump(data, f, indent=4)
-        print(f"Saved changes to {self.file_path}")
+        try:
+            self.backup_data()  # always backup before overwrite
+            with open(self.file_path, "w") as f:
+                json.dump(data, f, indent=4)
+            print(f"Saved changes to {self.file_path}")
+        except Exception as e:
+            print(e)
+    
 
     def backup_data(self):
         """Create timestamped backup of database file."""
-        if not os.path.exists(self.backup_dir):
-            os.makedirs(self.backup_dir)
+        try:
+            if not os.path.exists(self.backup_dir):
+                os.makedirs(self.backup_dir)
 
-        if os.path.exists(self.file_path):
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            backup_file = os.path.join(self.backup_dir, f"backup_{timestamp}.json")
+            if os.path.exists(self.file_path):
+                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                backup_file = os.path.join(self.backup_dir, f"backup_{timestamp}.json")
 
-            with open(self.file_path, "r") as file, open(backup_file, "w") as backup:
-                backup.write(file.read())
-            print(f"Backup created at {backup_file}")
-        else:
-            print("No database file to backup")
+                with open(self.file_path, "r") as file, open(backup_file, "w") as backup:
+                    backup.write(file.read())
+                print(f"Backup created at {backup_file}")
+            else:
+                print("No database file to backup")
+        except Exception as e:
+            print(e)
+    
 
 """Testing the functions"""
 db_manager = DatabaseManager("accounts.json")
