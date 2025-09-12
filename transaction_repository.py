@@ -16,24 +16,27 @@ class TransactionRepository:
         parameter account_number: Account number for which the transaction is added.
         parameter transaction: Dictionary containing transaction details.
         """
-        data = self.db_manager.load_data()
-        # Ensure "transactions" key exists in DB
-        if "transactions" not in data:
-            data["transactions"] = {}   #  ensure key exists
-        # Ensure account has a transaction list
-        if account_number not in data["transactions"]:
-            data["transactions"][account_number] = []
-        # Preventing duplicate transactions
-        for txn in data["transactions"][account_number]:
-            if txn["transaction_id"] == transaction["transaction_id"]:
-                print("Transaction already exists, skipping...")
-                return
-        # Add new transaction
-        print("Transaction added ")
-        data["transactions"][account_number].append(transaction)
-        self.db_manager.save_data(data)
-
+        try:
+            data = self.db_manager.load_data()
+            # Ensure "transactions" key exists in DB
+            if "transactions" not in data:
+                data["transactions"] = {}   #  ensure key exists
+            # Ensure account has a transaction list
+            if account_number not in data["transactions"]:
+                data["transactions"][account_number] = []
+            # Preventing duplicate transactions
+            for txn in data["transactions"][account_number]:
+                if txn["transaction_id"] == transaction["transaction_id"]:
+                    print("Transaction already exists, skipping...")
+                    return
+            # Add new transaction
+            print("Transaction added ")
+            data["transactions"][account_number].append(transaction)
+            self.db_manager.save_data(data)
+        except Exception as e:
+            print(e)
     
+
     def get_transactions(self, account_number, limit =10):
         """
         Fetch transactions for an account.
@@ -41,8 +44,11 @@ class TransactionRepository:
         parameter limit: Number of recent transactions to fetch (default 10).
         return: List of transactions (most recent first).
         """
-        data = self.db_manager.load_data()
-        return data["transactions"].get(account_number,[])
+        try:
+            data = self.db_manager.load_data()
+            return data["transactions"].get(account_number,[])
+        except Exception as e:
+            print(e)
     
     def get_transaction_by_id(self, transaction_id):
         """
@@ -50,11 +56,15 @@ class TransactionRepository:
         parameter transaction_id: Transaction ID to search for.
         return: Transaction dictionary if found, else None.
         """
-        data = self.db_manager.load_data()
-        for acc_tran in data["transactions"].values():
-            for tran in acc_tran:
-                if tran["transaction_id"] == transaction_id:
-                    return tran
+        try:
+            data = self.db_manager.load_data()
+            for acc_tran in data["transactions"].values():
+                for tran in acc_tran:
+                    if tran["transaction_id"] == transaction_id:
+                        return tran
+        except Exception as e:
+            print(e)
+    
         
     def update_balance_after_transaction(self,account_number, new_balance):
         """
@@ -62,10 +72,14 @@ class TransactionRepository:
         parameter account_number: Account number to update.
         parameter new_balance: Updated balance value (float).
         """
-        data = self.db_manager.load_data()
-        if account_number in data["accounts"]:
-            data["accounts"][account_number]["balance"] = new_balance
-            self.db_manager.save_data(data)
+        try:
+            data = self.db_manager.load_data()
+            if account_number in data["accounts"]:
+                data["accounts"][account_number]["balance"] = new_balance
+                self.db_manager.save_data(data)
+        except Exception as e:
+            print(e)
+    
 
 """Testing the functions"""
 
@@ -81,7 +95,7 @@ transaction = {
 }
 
 """ Add Transaction """
-# transaction_repo.add_transaction("ACC001", transaction)
+transaction_repo.add_transaction("ACC001", transaction)
 
 
 """Get transactions"""
