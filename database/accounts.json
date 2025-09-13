@@ -1,0 +1,42 @@
+{
+    "accounts": {
+        "ACC001": {
+            "account_number": "ACC001",
+            "pin": "1234",
+            "name": "Ravi",
+            "balance": 3500.0,
+            "account_type": "Savings",
+            "created_date": "2025-09-08",
+            "is_active": true
+        },
+        "ACC002": {
+            "account_number": "ACC002",
+            "pin": "1289",
+            "name": "Eren",
+            "balance": 10000.0,
+            "account_type": "Savings",
+            "created_date": "2025-09-08",
+            "is_active": true
+        }
+    },
+    "transactions": {
+        "ACC001": [
+            {
+                "transaction_id": "TXN001",
+                "date": "2025-09-08 12:00:00",
+                "type": "DEPOSIT",
+                "amount": 400.0,
+                "balance_after": 1500.0,
+                "description": "Cash Deposit"
+            },
+            {
+                "transaction_id": "TXN002",
+                "date": "2025-09-11 12:00:00",
+                "type": "DEPOSIT",
+                "amount": 5000.0,
+                "balance_after": 15000.0,
+                "description": "Cash Deposit"
+            }
+        ]
+    }
+}
