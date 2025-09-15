@@ -135,14 +135,6 @@
                 "amount": 150.0,
                 "balance_after": 3900.0,
                 "description": ""
-            },
-            {
-                "transaction_id": "202509152047036661 ",
-                "date": "2025-09-15 20:47:03",
-                "transaction_type": "DEPOSIT",
-                "amount": 200.0,
-                "balance_after": 4100.0,
-                "description": ""
             }
         ],
         "ACC002": [

@@ -10,7 +10,9 @@ from utils.format_utils import FormatUtils
 from utils.validation_utils import ValidationUtils
 
 class BankingSystem:
+    """Main controller class for managing banking operations and user sessions."""
     def __init__(self, db, account_repo, txn_repo, config, security, validity, format_u):
+        """Initialize BankingSystem with database manager, repositories, and utilities."""
         self.db = db
         self.accounts = account_repo
         self.txns = txn_repo
@@ -21,7 +23,7 @@ class BankingSystem:
         self.frmt = format_u
 
     def authenticate_user(self):
-        """Login process with try/except."""
+        """Handle login: ask for account number + PIN and set current_user if valid."""
         try:
             acc_no = input("Account number: ")
             pin = input("PIN: ")
@@ -39,6 +41,7 @@ class BankingSystem:
             print("Error in authentication:", e)
 
     def create_account(self):
+        """Create a new bank account after validating inputs and store it in the database."""
         try:
             name = input("Name: ")
             pin = input("PIN: ")
@@ -56,6 +59,7 @@ class BankingSystem:
             print("Error in create_account:", e)
 
     def main_menu(self):
+        """Display the main menu and route user choices to the appropriate methods."""
         while self.current_user:
             print("\n1) Balance 2) Deposit 3) Withdraw 4) Transfer 5) History 6) Details 7) Logout")
             c = input("Choose: ")
@@ -71,6 +75,7 @@ class BankingSystem:
                 print("Error in menu:", e)
 
     def deposit(self):
+        """Deposit money into the current user’s account and record the transaction."""
         try:
             amt = float(input("Deposit: "))
             self.current_user.deposit(amt)
@@ -84,6 +89,7 @@ class BankingSystem:
             print("Error in deposit:", e)
 
     def withdraw(self):
+        """Withdraw money from the current user’s account with validations and record the transaction."""
         try:
             amt = float(input("Withdraw: "))
             self.current_user.withdraw(amt, self.cfg.get_minimum_balance(), self.cfg.get_withdrawal_limit())
@@ -94,6 +100,7 @@ class BankingSystem:
             print("Error in withdraw:", e)
 
     def transfer_money(self):
+        """Transfer money from the current user to another account and record both transactions."""
         try:
             to_acc = input("Recipient account: ")
             amt = float(input("Amount: "))
@@ -111,6 +118,7 @@ class BankingSystem:
             print("Error in transfer:", e)
 
     def logout(self):
+        """Logout the current user and clear the session."""
         try:
             print("Logout...")
             self.current_user = None
@@ -118,6 +126,7 @@ class BankingSystem:
             print("Error in logout:", e)
 
     def run(self):
+        """Run the banking system loop: handle login, account creation, and menu navigation."""
         while True:
             print("\n1) Login 2) Create Account 0) Exit")
             c = input("Choose: ")

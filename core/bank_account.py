@@ -9,6 +9,7 @@ from datetime import datetime
 
 
 class BankAccount:
+    """Represents a bank account with attributes and methods for operations."""
     def __init__(self, account_number, pin, name, balance,
                  account_type="Savings", created_date=None, is_active=True):
         self.account_number = account_number
@@ -20,7 +21,7 @@ class BankAccount:
         self.is_active = is_active
 
     def deposit(self, amount):
-        """Deposit money with error handling."""
+        """Deposit money into the account. Returns updated balance."""
         try:
             if amount <= 0:
                 raise ValueError("Deposit must be positive.")
@@ -32,7 +33,9 @@ class BankAccount:
             return self.balance
 
     def withdraw(self, amount: float, minimum_balance: float, daily_limit: float):
-        """Withdraw money enforcing rules, handled inside."""
+        """Withdraw money with rules enforced (min balance, daily limit).
+        Returns updated balance or leaves balance unchanged on error.
+        """
         try:
             if amount <= 0:
                 raise ValueError("Withdrawal must be positive.")
@@ -48,10 +51,12 @@ class BankAccount:
             return self.balance
 
     def check_balance(self):
+        """Return the current balance of the account."""
         print(f"Balance = {self.balance}")
         return self.balance
 
     def get_account_info(self):
+        """Return account information as a dictionary (no PIN)."""
         return {
             "account_number": self.account_number,
             "name": self.name,
@@ -62,9 +67,11 @@ class BankAccount:
         }
 
     def validate_pin(self, pin: str):
+        """Validate entered PIN against stored PIN. Returns True/False."""
         return self._pin == pin
 
     def to_dict(self):
+        """Convert account object into a dictionary for JSON storage."""
         return {
             "account_number": self.account_number,
             "pin": self._pin,
@@ -77,6 +84,7 @@ class BankAccount:
 
     @staticmethod
     def from_dict(d: dict):
+        """Recreate a BankAccount object from a dictionary."""
         return BankAccount(
             d["account_number"], d["pin"], d["name"],
             d["balance"], d["account_type"], d["created_date"], d["is_active"]
