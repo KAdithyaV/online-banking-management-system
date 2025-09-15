@@ -4,11 +4,11 @@ from datetime import datetime
 
 class DatabaseManager:
 
-    def __init__(self, file_path="online-banking-management-system/accounts.json"):
+    def __init__(self, file_path="online-banking-management-system/data/accounts.json"):
         """ Initialize the DatabaseManager.
         parameter file_path: Path to the JSON file used for storing accounts."""
-        self.file_path = file_path
-        self.backup_dir = "data/backup/"
+        self.file_path = "online-banking-management-system/data/accounts.json"
+        self.backup_dir = "online-banking-management-system/data/backup/"
 
     def initialize_database(self):
         """Create the database file with a default account if it does not exist.

@@ -338,16 +338,6 @@
                 "balance_after": 1000.0,
                 "description": "Account opened"
             }
-        ],
-        "6648867011": [
-            {
-                "transaction_id": "202509152157324589 ",
-                "date": "2025-09-15 21:57:32",
-                "transaction_type": "OPEN",
-                "amount": 2345.0,
-                "balance_after": 2345.0,
-                "description": "Account opened"
-            }
         ]
     },
     "system_config": {

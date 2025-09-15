@@ -32,7 +32,7 @@ class FormatUtils:
             print("\nTransaction History:")
             for txn in transactions:
                   print(f"ID: {txn['transaction_id']} | Date: {txn['date']} | "
-                        f"Amount: {self.format_currency(txn['amount'])} | Type: {txn['type']}")
+                        f"Amount: {self.format_currency(txn['amount'])} | Type: {txn['transaction_type']}")
         except Exception as e:
             print(e)           
  

@@ -1,16 +1,16 @@
 import os
 import json
 from datetime import datetime
-from database_manager import db_manager
+# from database_manager import db_manager
 
-class Accountrepository:
+class AccountRepository:
     """ Repository layer for handling CRUD operations on accounts.
     Uses DatabaseManager for reading/writing JSON database. """
     def __init__(self,db_manager): 
         """Initialize AccountRepository with a DatabaseManager instance."""
         self.db_manager = db_manager
     
-    def create_account(self,name, pin, account_type, initial_balance=0.0):
+    def create_account(self,account_data):
         """Create a new account and save it in the database.
         parameter account_data: Dictionary containing account details."""
         try:
@@ -80,31 +80,31 @@ class Accountrepository:
     
 """Testing the functions"""
 
-account_repo = Accountrepository(db_manager)
-# transaction_repo = TransactionRepository(db_manager)
+# account_repo = Accountrepository(db_manager)
+# # transaction_repo = TransactionRepository(db_manager)
 
-account_data = {
-    "account_number": "ACC002",
-    "pin": "1289",
-    "name": "Joe",
-    "balance": 10000.0,
-    "account_type": "Savings",
-    "created_date": "2025-09-08",
-    "is_active": True
-}
+# account_data = {
+#     "account_number": "ACC002",
+#     "pin": "1289",
+#     "name": "Joe",
+#     "balance": 10000.0,
+#     "account_type": "Savings",
+#     "created_date": "2025-09-08",
+#     "is_active": True
+# }
 
 
 # # Create account
-account_repo.create_account(account_data)
-print("Account created ")
+# account_repo.create_account(account_data)
+# print("Account created ")
 
 # # Fetch account
 # acc = account_repo.get_account("ACC002")
 # print("Fetched account:", acc)
 
 # # Update account
-account_repo.update_account("ACC002", {"name": "Eren"})
-print(f"Updated account: {account_repo.get_account("ACC002")}")
+# account_repo.update_account("ACC002", {"name": "Eren"})
+# print(f"Updated account: {account_repo.get_account("ACC002")}")
 
 # Delete (deactivate) account
 # account_repo.delete_account("ACC001")

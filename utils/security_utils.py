@@ -60,11 +60,11 @@ class SecurityUtils:
             return "0"
 
 
-s = SecurityUtils()
-acc_no = s.generate_account_number()
-print("Account No:", acc_no)
-txn_id = s.generate_transaction_id()
-print("Transaction ID:", txn_id)
+# s = SecurityUtils()
+# acc_no = s.generate_account_number()
+# print("Account No:", acc_no)
+# txn_id = s.generate_transaction_id()
+# print("Transaction ID:", txn_id)
 
 
 

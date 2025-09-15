@@ -1,8 +1,8 @@
 import json
 import os
 from datetime import datetime
-from database_manager import db_manager
-from account_repository import account_repo
+# from database_manager import db_manager
+# from account_repository import account_repo
 
 class TransactionRepository:
     def __init__(self,db_manager):
@@ -19,6 +19,8 @@ class TransactionRepository:
         try:
             data = self.db_manager.load_data()
             # Ensure "transactions" key exists in DB
+            if hasattr(transaction, "to_dict"): # added by Adithya to conver to dict
+                transaction = transaction.to_dict()
             if "transactions" not in data:
                 data["transactions"] = {}   #  ensure key exists
             # Ensure account has a transaction list
@@ -83,16 +85,16 @@ class TransactionRepository:
 
 """Testing the functions"""
 
-transaction_repo = TransactionRepository(db_manager)
-# Step 4: Work with Transactions
-transaction = {
-    "transaction_id": "TXN002",
-    "date": "2025-09-11 12:00:00",
-    "type": "DEPOSIT",
-    "amount": 5000.0,
-    "balance_after": 15000.0,
-    "description": "Cash Deposit"
-}
+# transaction_repo = TransactionRepository(db_manager)
+# # Step 4: Work with Transactions
+# transaction = {
+#     "transaction_id": "TXN002",
+#     "date": "2025-09-11 12:00:00",
+#     "type": "DEPOSIT",
+#     "amount": 5000.0,
+#     "balance_after": 15000.0,
+#     "description": "Cash Deposit"
+# }
 
 """ Add Transaction """
 # transaction_repo.add_transaction("ACC001", transaction)

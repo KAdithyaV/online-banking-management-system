@@ -78,7 +78,7 @@ class ConfigManager:
             print(e)    
         
 
-c = ConfigManager()
-print("Min balance:", c.get_minimum_balance())
-c.update_config("minimum_balance", 200)
-print("Updated Min balance:", c.get_minimum_balance())
+# c = ConfigManager()
+# print("Min balance:", c.get_minimum_balance())
+# c.update_config("minimum_balance", 200)
+# print("Updated Min balance:", c.get_minimum_balance())

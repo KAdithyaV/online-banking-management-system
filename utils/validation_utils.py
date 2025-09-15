@@ -64,6 +64,6 @@ class ValidationUtils:
         except Exception as e:
             print(e)
       
-v = ValidationUtils()
-print(v.validate_pin("1234"))  
-print(v.validate_name("John Doe"))  
+# v = ValidationUtils()
+# print(v.validate_pin("1234"))  
+# print(v.validate_name("John Doe"))  
