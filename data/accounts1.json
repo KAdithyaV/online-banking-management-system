@@ -1,0 +1,13 @@
+{
+    "accounts": {
+        "ACC001": {
+            "account_number": "ACC001",
+            "pin": "1234",
+            "name": "Ravi",
+            "balance": 1500.0,
+            "account_type": "Savings",
+            "created_date": "2024-01-15",
+            "is_active": true
+        }
+    }
+}

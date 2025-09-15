@@ -4,7 +4,7 @@
             "account_number": "ACC001",
             "pin": "1234",
             "name": "Ravi",
-            "balance": 3700.0,
+            "balance": 4100.0,
             "account_type": "Savings",
             "created_date": "2025-09-08",
             "is_active": true
@@ -13,7 +13,7 @@
             "account_number": "ACC002",
             "pin": "1289",
             "name": "Eren",
-            "balance": 11150.0,
+            "balance": 10850.0,
             "account_type": "Savings",
             "created_date": "2025-09-08",
             "is_active": true
@@ -50,33 +50,6 @@
             "pin": "5678",
             "name": "avi",
             "balance": 1000.0,
-            "account_type": "Savings",
-            "created_date": "2025-09-15",
-            "is_active": true
-        },
-        "6576357408": {
-            "account_number": "6576357408",
-            "pin": "4567",
-            "name": "wer",
-            "balance": 2000.0,
-            "account_type": "Savings",
-            "created_date": "2025-09-15",
-            "is_active": true
-        },
-        "7245741875": {
-            "account_number": "7245741875",
-            "pin": "4567",
-            "name": "sdf",
-            "balance": 1000.0,
-            "account_type": "Savings",
-            "created_date": "2025-09-15",
-            "is_active": true
-        },
-        "6648867011": {
-            "account_number": "6648867011",
-            "pin": "4567",
-            "name": "ghw",
-            "balance": 2345.0,
             "account_type": "Savings",
             "created_date": "2025-09-15",
             "is_active": true
@@ -187,46 +160,6 @@
                 "amount": 100.0,
                 "balance_after": 4200.0,
                 "description": ""
-            },
-            {
-                "transaction_id": "202509152146414455 ",
-                "date": "2025-09-15 21:46:41",
-                "transaction_type": "WITHDRAW",
-                "amount": 100.0,
-                "balance_after": 4100.0,
-                "description": ""
-            },
-            {
-                "transaction_id": "202509152146521615 ",
-                "date": "2025-09-15 21:46:52",
-                "transaction_type": "WITHDRAW",
-                "amount": 100.0,
-                "balance_after": 4000.0,
-                "description": ""
-            },
-            {
-                "transaction_id": "202509152156511188 ",
-                "date": "2025-09-15 21:56:51",
-                "transaction_type": "DEPOSIT",
-                "amount": 200.0,
-                "balance_after": 4200.0,
-                "description": ""
-            },
-            {
-                "transaction_id": "202509152156588868 ",
-                "date": "2025-09-15 21:56:58",
-                "transaction_type": "WITHDRAW",
-                "amount": 300.0,
-                "balance_after": 3900.0,
-                "description": ""
-            },
-            {
-                "transaction_id": "202509152157086724 ",
-                "date": "2025-09-15 21:57:08",
-                "transaction_type": "WITHDRAW",
-                "amount": 200.0,
-                "balance_after": 3700.0,
-                "description": ""
             }
         ],
         "ACC002": [
@@ -260,22 +193,6 @@
                 "transaction_type": "TRANSFER_IN",
                 "amount": 100.0,
                 "balance_after": 10850.0,
-                "description": ""
-            },
-            {
-                "transaction_id": "202509152146522234 ",
-                "date": "2025-09-15 21:46:52",
-                "transaction_type": "TRANSFER_IN",
-                "amount": 100.0,
-                "balance_after": 10950.0,
-                "description": ""
-            },
-            {
-                "transaction_id": "202509152157081597 ",
-                "date": "2025-09-15 21:57:08",
-                "transaction_type": "TRANSFER_IN",
-                "amount": 200.0,
-                "balance_after": 11150.0,
                 "description": ""
             }
         ],
@@ -316,36 +233,6 @@
                 "transaction_type": "OPEN",
                 "amount": 1000.0,
                 "balance_after": 1000.0,
-                "description": "Account opened"
-            }
-        ],
-        "6576357408": [
-            {
-                "transaction_id": "202509152149265454 ",
-                "date": "2025-09-15 21:49:26",
-                "transaction_type": "OPEN",
-                "amount": 2000.0,
-                "balance_after": 2000.0,
-                "description": "Account opened"
-            }
-        ],
-        "7245741875": [
-            {
-                "transaction_id": "202509152155301388 ",
-                "date": "2025-09-15 21:55:30",
-                "transaction_type": "OPEN",
-                "amount": 1000.0,
-                "balance_after": 1000.0,
-                "description": "Account opened"
-            }
-        ],
-        "6648867011": [
-            {
-                "transaction_id": "202509152157324589 ",
-                "date": "2025-09-15 21:57:32",
-                "transaction_type": "OPEN",
-                "amount": 2345.0,
-                "balance_after": 2345.0,
                 "description": "Account opened"
             }
         ]
